@@ -1,46 +1,50 @@
-[tool.poetry]
+[project]
 name = "basana"
 version = "1.9"
-homepage = "https://github.com/gbeced/basana"
-repository = "https://github.com/gbeced/basana"
-documentation = "https://basana.readthedocs.io/en/latest/"
 description = "A Python async and event driven framework for algorithmic trading, with a focus on crypto currencies."
-authors = ["Gabriel Becedillas <gabriel.becedillas@gmail.com>"]
-license = "Apache-2.0"
-packages = [{include = "basana"}]
+authors = [
+    {name = "Gabriel Becedillas", email = "gabriel.becedillas@gmail.com"}
+]
+license = {text = "Apache-2.0"}
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "aiohttp[speedups]>=3.13.2",
+    "python-dateutil>=2.9.0.post0",
+]
 
-[tool.poetry.dependencies]
-python = "^3.9"
-aiohttp = {extras = ["speedups"], version = "^3.10"}
-python-dateutil = "^2.9"
-# Optional dependencies, some of which are included in the below `extras`. They can be opted into by apps.
-plotly = {version = "^5.14.1", optional = true}
-kaleido = {version = "0.2.1", optional = true}
+[project.optional-dependencies]
+charts = [
+    "plotly>=6.4.0",
+    "kaleido>=1.2.0",
+]
 
-[tool.poetry.extras]
-charts = ["plotly", "kaleido"]
-
-[tool.poetry.group.dev.dependencies]
-aioresponses = "^0.7.7"
-mypy = "^1.11"
-pytest = "^8.3"
-pytest-cov = "^5.0"
-pytest-mock = "^3.14"
-talipp = "^2.4"
-types-python-dateutil = "^2.9"
-websockets = "^13"
-pandas = "^2.2"
-statsmodels = "^0.14"
-textual = "^6.3.0"
-ruff = "^0.14.2"
-
-[tool.poetry.group.docs.dependencies]
-sphinx = {version = "^8.1", markers = "python_version >= '3.10'"}
-sphinx-rtd-theme = {version = "^3.0", markers = "python_version >= '3.10'"}
+[project.urls]
+Homepage = "https://github.com/gbeced/basana"
+Repository = "https://github.com/gbeced/basana"
+Documentation = "https://basana.readthedocs.io/en/latest/"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "aioresponses>=0.7.8",
+    "mypy>=1.18.2",
+    "pytest>=9.0.1",
+    "pytest-cov>=7.0.0",
+    "pytest-mock>=3.15.1",
+    "talipp>=2.7.0",
+    "types-python-dateutil>=2.9.0.20251115",
+    "websockets>=10.4",
+    "pandas>=2.3.3",
+    "statsmodels>=0.14.5",
+    "textual>=6.6.0",
+    "ruff>=0.14.5",
+    "sphinx>=8.2.3",
+    "sphinx-rtd-theme>=3.0.2",
+]
 
 [tool.ruff]
 line-length = 120
@@ -52,3 +56,18 @@ exclude = [
 # Add the `line-too-long` rule to the enforced rule set.
 extend-select = ["E501"]
 
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.coverage.report]
+fail_under = 100
+show_missing = true
+skip_covered = true
+include = ["basana/*"]
+exclude_lines = [
+    "raise NotImplementedError()",
+    "pragma: no cover",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["basana"]
