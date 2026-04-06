@@ -53,21 +53,30 @@ exclude = [
 ]
 
 [tool.ruff.lint]
-# Add the `line-too-long` rule to the enforced rule set.
+select = ["E", "W", "F", "I", "UP", "B", "SIM", "C4", "RUF", "PERF", "TC", "PTH"]
 extend-select = ["E501"]
 
 [tool.pytest.ini_options]
+minversion = "9.0"
+addopts = ["-ra", "-q", "--strict-markers", "--import-mode=importlib"]
 testpaths = ["tests"]
+pythonpath = ["src"]
+xfail_strict = true
+filterwarnings = ["error"]
 
 [tool.coverage.report]
 fail_under = 100
 show_missing = true
 skip_covered = true
-include = ["basana/*"]
+include = ["src/basana/*"]
 exclude_lines = [
     "raise NotImplementedError()",
     "pragma: no cover",
 ]
 
+[tool.pyright]
+pythonVersion = "3.13"
+typeCheckingMode = "basic"
+
 [tool.hatch.build.targets.wheel]
-packages = ["basana"]
+packages = ["src/basana"]
