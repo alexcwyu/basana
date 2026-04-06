@@ -1,5 +1,30 @@
 # Changelog
 
+## 1.10.1
+
+### Bug fixes
+
+* Account balance charts were subtracting borrowed balance twice.
+
+## 1.10
+
+### Features
+
+* Candlestick charts.
+* Technical indicators and custom charts can now set a custom marker for Plotly.
+
+### Bug fixes
+
+* Backtesting stop orders were being canceled if the stop price was not hit.
+* Backtesting order updates were sometimes being processed after bar events. Order update events should get processed first.
+* Backtesting fills had the datetime of the event and now they have the datetime of the bar where the fill occurred.
+* Backtesting `OrderInfo.fill_price` was being calculated using the base and quote amounts filled, and that was sometimes leading to invalid values.
+
+### Misc
+
+* Added support for Python 3.14.
+* Dropped support for Python 3.9.
+
 ## 1.9
 
 ### Features
