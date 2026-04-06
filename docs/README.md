@@ -1,5 +1,8 @@
 # Basana
 
+> **Last Updated**: 2026-04-06T16:25:30Z  \
+> **Git Hash**: `2b49cd4`
+
 **Async, event-driven framework for algorithmic trading with backtesting and live exchange support.**
 
 | Field | Details |
