@@ -490,8 +490,6 @@ def test_subscribe_to_bar_events_twice(bitstamp_exchange):
 
 
 def test_subscribe_to_ws_channel_twice(bitstamp_exchange):
-    events_received = []
-
     async def handler1(event):
         pass
 
