@@ -1,5 +1,22 @@
 # Changelog
 
+## TBD
+
+### Features
+
+* `fees.Percentage` now supports charging fees in base currency.
+* Both `BacktestingDispatcher` and `RealtimeDispatcher` now support `subscribe_event_loop_started` to register handlers that are called once when the dispatch loop starts.
+
+## 1.10.2
+
+### Bug fixes
+
+* Newer versions of kaleido cannot serialize Python Decimal objects to JSON.
+
+### Misc
+
+* Performance optimizations.
+
 ## 1.10.1
 
 ### Bug fixes
