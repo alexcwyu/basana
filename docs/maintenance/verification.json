@@ -1,0 +1,278 @@
+{
+  "repository": "basana",
+  "source_commit_before_documentation_commit": "049f8fc00b05ead0aff97979b96c3e2cfc311c1d",
+  "recorded_on": "2026-10-12",
+  "records": [
+    {
+      "command": "uv build --python 3.14",
+      "exit_code": 0,
+      "seconds": 0.13,
+      "check": "build",
+      "original_log": "basana-build.log",
+      "log_sha256": "8c8baa29e8940780beb44b01c4bafe524676c822f8a37117a9ebaad8a7282088",
+      "outcomes": [
+        "Successfully built dist/basana-1.11.tar.gz",
+        "Successfully built dist/basana-1.11-py3-none-any.whl"
+      ]
+    },
+    {
+      "command": "uv build --python 3.14",
+      "exit_code": 0,
+      "seconds": 0.13,
+      "check": "build-final",
+      "original_log": "basana-build-final.log",
+      "log_sha256": "8c8baa29e8940780beb44b01c4bafe524676c822f8a37117a9ebaad8a7282088",
+      "outcomes": [
+        "Successfully built dist/basana-1.11.tar.gz",
+        "Successfully built dist/basana-1.11-py3-none-any.whl"
+      ]
+    },
+    {
+      "command": "uv build --python 3.14",
+      "exit_code": 0,
+      "seconds": 0.21,
+      "check": "build-vendor-source-archive",
+      "original_log": "basana-build-vendor-source-archive.log",
+      "log_sha256": "8c8baa29e8940780beb44b01c4bafe524676c822f8a37117a9ebaad8a7282088",
+      "outcomes": [
+        "Successfully built dist/basana-1.11.tar.gz",
+        "Successfully built dist/basana-1.11-py3-none-any.whl"
+      ]
+    },
+    {
+      "command": "/Users/alex/.local/share/uv/python/cpython-3.14-macos-aarch64-none/bin/python3.14 -m compileall -q src",
+      "exit_code": 0,
+      "seconds": 0.13,
+      "check": "compile",
+      "original_log": "basana-compile.log",
+      "log_sha256": "cdad8d31f71f9ca30ecb973875a31a35e82562441812821f059e0f67f0cb87cf",
+      "outcomes": []
+    },
+    {
+      "command": "uv run --no-sync python -m compileall -q src",
+      "exit_code": 0,
+      "seconds": 0.08,
+      "check": "compile-final",
+      "original_log": "basana-compile-final.log",
+      "log_sha256": "18836bd061fd2cbbcee4cfbe11a0c5bb8956a47a78decc98b17bdc695bd896a7",
+      "outcomes": []
+    },
+    {
+      "command": "uv run --no-sync invoke lint",
+      "exit_code": 0,
+      "seconds": 0.68,
+      "check": "lint-owned-sources",
+      "original_log": "basana-lint-owned-sources.log",
+      "log_sha256": "20a7ed484e951ccf4abe3ff26501a5c419fa5be832dfa252f74f0c0792d54455",
+      "outcomes": []
+    },
+    {
+      "command": "uv run --no-sync invoke lint",
+      "exit_code": 1,
+      "seconds": 11.58,
+      "check": "lint-upstream-required",
+      "original_log": "basana-lint-upstream-required.log",
+      "log_sha256": "a34a88de151a98c2017d67db5575149db0664fe12fd6f14f1daac34ac900a104",
+      "outcomes": []
+    },
+    {
+      "command": "uv lock --upgrade --python 3.14",
+      "exit_code": 0,
+      "seconds": 0.34,
+      "check": "lock-3.14",
+      "original_log": "basana-lock-3.14.log",
+      "log_sha256": "cd8653b1c2208089699b1b152e49ec3c8ef3b3020a1e652ec952318d1c28e736",
+      "outcomes": []
+    },
+    {
+      "command": "uv lock --upgrade --python 3.15",
+      "exit_code": 0,
+      "seconds": 0.58,
+      "check": "lock-3.15",
+      "original_log": "basana-lock-3.15.log",
+      "log_sha256": "744162ccdde40de390ace9310b5d6a85fca937c8ba192dfaa46a5cc2d8877423",
+      "outcomes": []
+    },
+    {
+      "command": "env MACOSX_DEPLOYMENT_TARGET=27.0 uv sync --directory /tmp/trading-python315-probes/basana --all-extras --all-groups --python 3.15",
+      "exit_code": 1,
+      "seconds": 4.27,
+      "check": "python315-host-deployment-probe",
+      "original_log": "basana-python315-host-deployment-probe.log",
+      "log_sha256": "b044f5654a08dd19320b63150c21365736c6a1bf29b25b9873654bd971c3a136",
+      "outcomes": []
+    },
+    {
+      "command": "uv sync --directory /tmp/trading-python315-probes/basana --all-extras --all-groups --python 3.15",
+      "exit_code": 1,
+      "seconds": 4.5,
+      "check": "python315-source-probe",
+      "original_log": "basana-python315-source-probe.log",
+      "log_sha256": "9c75978af4659bebc2665f364e66f3ed9c3430fbcf3e5d18ba359af0600d5e06",
+      "outcomes": []
+    },
+    {
+      "command": "uv sync --all-extras --all-groups --python 3.14",
+      "exit_code": 0,
+      "seconds": 1.26,
+      "check": "sync-3.14",
+      "original_log": "basana-sync-3.14.log",
+      "log_sha256": "3b12f71d4191fffb56a4d13ab1e622b12dfaf23d8c42cdea8aafc97c63bfb6dd",
+      "outcomes": []
+    },
+    {
+      "command": "uv sync --all-extras --all-groups --python 3.14",
+      "exit_code": 0,
+      "seconds": 0.09,
+      "check": "sync-aiohttp-mock-compatibility",
+      "original_log": "basana-sync-aiohttp-mock-compatibility.log",
+      "log_sha256": "924062d85eadff5fa1c4a14bc9d654b63f4605f5750878bfccbaf23009563469",
+      "outcomes": []
+    },
+    {
+      "command": "uv sync --all-extras --all-groups --python 3.14 --reinstall-package aioresponses",
+      "exit_code": 0,
+      "seconds": 0.58,
+      "check": "sync-mock-rebuild",
+      "original_log": "basana-sync-mock-rebuild.log",
+      "log_sha256": "9f446d825b22eebb531fa269e56ad1f53878c51209e989cff94ae0b063021b39",
+      "outcomes": []
+    },
+    {
+      "command": "uv run --no-sync python -m pytest --cov=src/basana --cov-config=pyproject.toml",
+      "exit_code": 1,
+      "seconds": 82.29,
+      "check": "tests",
+      "original_log": "basana-tests.log",
+      "log_sha256": "cd4fa4ae038ec5de226cd981e92f680b00817ef7127b4508e07d484883a210aa",
+      "outcomes": [
+        "87 failed, 358 passed in 67.74s (0:01:07)"
+      ]
+    },
+    {
+      "command": "uv run --no-sync python -m pytest --cov=src/basana --cov-config=pyproject.toml --cov-report=term-missing --cov-fail-under=100",
+      "exit_code": 1,
+      "seconds": 97.67,
+      "check": "tests-aiohttp-mock-compatibility",
+      "original_log": "basana-tests-aiohttp-mock-compatibility.log",
+      "log_sha256": "af50c3323b8c8623e845020109497f6077fac52faca736edd9d71fe1bda46700",
+      "outcomes": [
+        "86 failed, 359 passed in 93.93s (0:01:33)"
+      ]
+    },
+    {
+      "command": "uv run --no-sync python -m pytest --cov=src/basana --cov-config=pyproject.toml --cov-report=term-missing --cov-fail-under=100",
+      "exit_code": 1,
+      "seconds": 32.4,
+      "check": "tests-current-api-mock",
+      "original_log": "basana-tests-current-api-mock.log",
+      "log_sha256": "63ab88145f4fe50d000237de44644bb09b32911c98c79f815d0597549e448690",
+      "outcomes": [
+        "2 failed, 443 passed in 29.99s"
+      ]
+    },
+    {
+      "command": "uv run --no-sync python -m pytest --cov=src/basana --cov-config=pyproject.toml --cov-report=term-missing --cov-fail-under=100",
+      "exit_code": 0,
+      "seconds": 29.81,
+      "check": "tests-deprecated-api-assertion",
+      "original_log": "basana-tests-deprecated-api-assertion.log",
+      "log_sha256": "f2f9eac0afa676b2d89029f477fa4b1f4048185fc7dfdad22d55ceeac77e6d8c",
+      "outcomes": [
+        "445 passed in 28.02s"
+      ]
+    },
+    {
+      "command": "uv run --no-sync python -c import sys,importlib.metadata,json; print(sys.version); print(json.dumps({d.metadata[\"Name\"]: d.version for d in importlib.metadata.distributions()},indent=2,sort_keys=True))",
+      "exit_code": 0,
+      "seconds": 0.18,
+      "check": "versions-final",
+      "original_log": "basana-versions-final.log",
+      "log_sha256": "e0333fd2946e56b126ee632b3bcdfbff1810abd244da37441e439280e9c7ff56",
+      "outcomes": []
+    },
+    {
+      "command": "uv sync --all-extras --all-groups --python 3.14 --no-build --no-install-project",
+      "exit_code": 2,
+      "seconds": 0.04,
+      "check": "wheel-probe-3.14",
+      "original_log": "basana-wheel-probe-3.14.log",
+      "log_sha256": "638ad844ac96b79298fdd6e524c27080afdedbdf986c4d4465b16df64283ba40",
+      "outcomes": []
+    },
+    {
+      "command": "uv sync --all-extras --all-groups --python 3.15 --no-build --no-install-project",
+      "exit_code": 2,
+      "seconds": 3.4,
+      "check": "wheel-probe-3.15",
+      "original_log": "basana-wheel-probe-3.15.log",
+      "log_sha256": "3c9dd92d6f2a102411489609d745e05564db8c18139d2c7e6c77e8327b2aa148",
+      "outcomes": []
+    }
+  ],
+  "summary": {
+    "repo": "basana",
+    "branch": "feature/ayu_develop",
+    "blockers": [],
+    "started": "2026-10-12T00:26:51+0800",
+    "dependency_updates": [],
+    "lock": "passed",
+    "python": "3.14",
+    "sync": "passed",
+    "build": "passed",
+    "compile": "passed",
+    "tests": "passed",
+    "test_summary": "$ uv run --no-sync python -m pytest --cov=src/basana --cov-config=pyproject.toml --cov-report=term-missing --cov-fail-under=100\n........................................................................ [ 16%]\n........................................................................ [ 32%]\n........................................................................ [ 48%]\n........................................................................ [ 64%]\n........................................................................ [ 80%]\n........................................................................ [ 97%]\n.............                                                            [100%]\n================================ tests coverage ================================\n_______________ coverage: platform darwin, python 3.14.8-final-0 _______________\n\nName    Stmts   Miss  Cover   Missing\n-------------------------------------\nTOTAL    5535      0   100%\n\n95 files skipped due to complete coverage.\nRequired test coverage of 100% reached. Total coverage: 100.00%\n445 passed in 28.02s\n",
+    "finished": "2026-10-12T00:28:22+0800",
+    "lint": "passed",
+    "head": "049f8fc00b05ead0aff97979b96c3e2cfc311c1d",
+    "notes": [
+      "The full existing suite passes 445 cases and covers every one of 5535 source statements (100.00%). Deprecated API assertions use deprecated_call and retain their original value assertions.",
+      "The simulator logs use the current fill.price field; log timestamps are included in pytest log formatting so the existing logging assertion remains meaningful. CSV/JSON input files close deterministically.",
+      "Latest CCXT requires aiohttp 3.14; current aioresponses 0.7.9 needs the documented stream_writer mock patch. See vendor/aioresponses/PROVENANCE.md and original retained license.",
+      "The source-build Python 3.15 attempt fails compiling pycares 5.1.0, required by aiohttp speedups. Native build evidence is retained.",
+      "Invoke lint validates 95 owned Python files. Verified third-party vendor source retains its upstream lint conventions and is excluded from the project Ruff scan."
+    ],
+    "python_version": "3.14.8 (main, Oct  9 2026, 15:11:09) [Clang 22.1.3 ]",
+    "failed_attempts": [
+      {
+        "python": "3.15",
+        "stage": "native wheel probe",
+        "details": "$ uv sync --all-extras --all-groups --python 3.15 --no-build --no-install-project\nUsing CPython 3.15.0\nRemoved virtual environment at: .venv\nCreating virtual environment at: .venv\nResolved 89 packages in 11ms\nerror: Distribution `aioresponses==0.7.9+ayu1 @ directory+vendor/aioresponses` can't be installed because it is marked as `--no-build` but has no binary distribution\n"
+      },
+      {
+        "stage": "tests",
+        "details": "est_binance_exchange_isolated_margin.py::test_create_order[<lambda>-response_payload0-expected_attrs0-expected_fills0]\nFAILED tests/test_binance_exchange_isolated_margin.py::test_create_order[<lambda>-response_payload1-expected_attrs1-expected_fills1]\nFAILED tests/test_binance_exchange_spot.py::test_account_balances - Attribute...\nFAILED tests/test_binance_exchange_spot.py::test_create_order[<lambda>-response_payload0-expected_attrs0-expected_fills0]\nFAILED tests/test_binance_exchange_spot.py::test_create_order[<lambda>-response_payload1-expected_attrs1-expected_fills1]\nFAILED tests/test_binance_exchange_spot.py::test_create_order[<lambda>-response_payload2-expected_attrs2-expected_fills2]\nFAILED tests/test_binance_exchange_spot.py::test_create_order[<lambda>-response_payload3-expected_attrs3-expected_fills3]\nFAILED tests/test_binance_exchange_spot.py::test_create_order[<lambda>-response_payload4-expected_attrs4-expected_fills4]\nFAILED tests/test_binance_exchange_spot.py::test_order_info[pair0-15456494165-None-order_payload0-trades_payload0-expected_attrs0-None]\nFAILED tests/test_binance_exchange_spot.py::test_order_info[pair1-None-kTjLDEuQdFO5VZmWTbAT7b-order_payload1-trades_payload1-expected_attrs1-expected_first_trade1]\nFAILED tests/test_binance_exchange_spot.py::test_error_retrieving_order_info\nFAILED tests/test_binance_exchange_spot.py::test_cancel_order[pair0-15456494165-None-response_payload0-expected_attrs0]\nFAILED tests/test_binance_exchange_spot.py::test_cancel_order[pair1-None-wmJ3mL6libCN8N7rEjCTIk-response_payload1-expected_attrs1]\nFAILED tests/test_binance_exchange_spot.py::test_get_open_orders[pair0-open_orders_payload0-expected_first_open_order0]\nFAILED tests/test_binance_exchange_spot.py::test_create_oco_order[<lambda>-response_payload0-expected_attrs0]\nFAILED tests/test_binance_exchange_spot.py::test_cancel_oco_order[pair0-77862615-None-response_payload0-expected_attrs0]\nFAILED tests/test_binance_exchange_spot.py::test_cancel_oco_order[pair1-None-0A8oF9T3k96l6lqzqGOIfB-response_payload1-expected_attrs1]\nFAILED tests/test_binance_exchange_spot.py::test_oco_order_info[77826706-None-response_payload0-expected_attrs0]\nFAILED tests/test_binance_exchange_spot.py::test_oco_order_info[None-9wQuvisHlbJPQOwrJLhqgn-response_payload1-expected_attrs1]\nFAILED tests/test_binance_order_book.py::test_poll_ok_with_custom_session - T...\nFAILED tests/test_binance_tools.py::test_download_ohlc - AttributeError: 'Non...\nFAILED tests/test_binance_user_data.py::test_websocket_ok_listen_key_channels[cross_margin_account-http://binance.mock/sapi/v1/userDataStream]\nFAILED tests/test_binance_user_data.py::test_websocket_ok_listen_key_channels[isolated_margin_account-http://binance.mock/sapi/v1/userDataStream/isolated]\nFAILED tests/test_bitstamp_client.py::test_get_ohlc_data_using_end - Attribut...\nFAILED tests/test_bitstamp_client.py::test_error_parsing[403-response_body0-403 Forbidden]\nFAILED tests/test_bitstamp_client.py::test_error_parsing[200-response_body1-Order not found]\nFAILED tests/test_bitstamp_client.py::test_error_parsing[200-response_body2-Order not found]\nFAILED tests/test_bitstamp_client.py::test_error_parsing[200-response_body3-Order not found]\nFAILED tests/test_bitstamp_exchange.py::test_balances - AttributeError: 'None...\nFAILED tests/test_bitstamp_exchange.py::test_open_orders - AttributeError: 'N...\nFAILED tests/test_bitstamp_exchange.py::test_order_info[1536137941123072-expected_attrs0]\nFAILED tests/test_bitstamp_exchange.py::test_order_info[99999999-expected_attrs1]\nFAILED tests/test_bitstamp_exchange.py::test_order_status - AttributeError: '...\nFAILED tests/test_bitstamp_exchange.py::test_order_status_without_transactions\nFAILED tests/test_bitstamp_exchange.py::test_order_status_not_found - Attribu...\nFAILED tests/test_bitstamp_exchange.py::test_explicit_session - AttributeErro...\nFAILED tests/test_bitstamp_exchange.py::test_cancel_order - AttributeError: '...\nFAILED tests/test_bitstamp_exchange.py::test_order_requests[<lambda>-buy-expected_amount0-expected_price0-1539419698798592]\nFAILED tests/test_bitstamp_exchange.py::test_order_requests[<lambda>-buy-expected_amount1-expected_price1-1538955091660800]\nFAILED tests/test_bitstamp_exchange.py::test_order_requests[<lambda>-sell-expected_amount2-expected_price2-1540371958628352]\nFAILED tests/test_bitstamp_exchange.py::test_cancel_inexistent_order - Attrib...\nFAILED tests/test_bitstamp_exchange.py::test_bid_ask - AttributeError: 'NoneT...\nFAILED tests/test_bitstamp_exchange.py::test_get_pair_info - AttributeError: ...\nFAILED tests/test_bitstamp_order_book.py::test_poll_ok_with_custom_session - ...\nFAILED tests/test_bitstamp_orders.py::test_websocket_ok[False] - TimeoutError\nFAILED tests/test_bitstamp_orders.py::test_authentication_fails - TimeoutError\nFAILED tests/test_bitstamp_tools.py::test_download_ohlc - AttributeError: 'No...\nFAILED tests/test_bitstamp_trades.py::test_websocket_ok[False] - TimeoutError\n87 failed, 358 passed in 67.74s (0:01:07)\n"
+      },
+      {
+        "stage": "tests",
+        "details": "lan4-False]\nFAILED tests/test_backtesting_exchange_orders.py::test_order_requests[order_plan5-True]\nFAILED tests/test_backtesting_exchange_orders.py::test_small_fill_is_ignored_after_rounding\nFAILED tests/test_backtesting_exchange_orders.py::test_liquidity_is_exhausted_and_order_is_canceled\nFAILED tests/test_binance_client.py::test_error_parsing[403-response_body0-403 Forbidden]\nFAILED tests/test_binance_client.py::test_error_parsing[400-response_body1-Signature for this request is not valid.]\nFAILED tests/test_binance_exchange.py::test_bid_ask - AttributeError: 'NoneTy...\nFAILED tests/test_binance_exchange.py::test_pair_info_explicit_session - Attr...\nFAILED tests/test_binance_exchange.py::test_symbol_to_pair - AttributeError: ...\nFAILED tests/test_binance_exchange_cross_margin.py::test_account_balances - A...\nFAILED tests/test_binance_exchange_cross_margin.py::test_create_order[<lambda>-response_payload0-expected_attrs0-expected_fills0]\nFAILED tests/test_binance_exchange_cross_margin.py::test_create_order[<lambda>-response_payload1-expected_attrs1-expected_fills1]\nFAILED tests/test_binance_exchange_cross_margin.py::test_create_order[<lambda>-response_payload2-expected_attrs2-expected_fills2]\nFAILED tests/test_binance_exchange_cross_margin.py::test_create_order[<lambda>-response_payload3-expected_attrs3-expected_fills3]\nFAILED tests/test_binance_exchange_cross_margin.py::test_order_info[pair0-16422505508-None-order_payload0-trades_payload0-expected_attrs0-expected_first_trade0]\nFAILED tests/test_binance_exchange_cross_margin.py::test_order_info[pair1-None-E1547A6979EA49A9A849A457BD751D38-order_payload1-trades_payload1-expected_attrs1-expected_first_trade1]\nFAILED tests/test_binance_exchange_cross_margin.py::test_get_open_orders[pair0-open_orders_payload0-expected_first_open_order0]\nFAILED tests/test_binance_exchange_cross_margin.py::test_cancel_order[pair0-16582318135-None-response_payload0-expected_attrs0]\nFAILED tests/test_binance_exchange_cross_margin.py::test_cancel_order[pair1-None-FCE43038586A45EBB0DBF8AD0F360E5A-response_payload1-expected_attrs1]\nFAILED tests/test_binance_exchange_cross_margin.py::test_create_oco_order[<lambda>-response_payload0-expected_attrs0]\nFAILED tests/test_binance_exchange_cross_margin.py::test_oco_order_info[79592962-None-response_payload0-expected_attrs0]\nFAILED tests/test_binance_exchange_cross_margin.py::test_oco_order_info[None-3hwrDggYdWhtiNAzm5bNDf-response_payload1-expected_attrs1]\nFAILED tests/test_binance_exchange_cross_margin.py::test_cancel_oco_order[pair0-79680111-None-response_payload0-expected_attrs0]\nFAILED tests/test_binance_exchange_cross_margin.py::test_cancel_oco_order[pair1-None-B3331893C53A4F1487EB78F2E16D4FDD-response_payload1-expected_attrs1]\nFAILED tests/test_binance_exchange_cross_margin.py::test_transfer - Attribute...\nFAILED tests/test_binance_exchange_isolated_margin.py::test_transfer - Attrib...\nFAILED tests/test_binance_exchange_isolated_margin.py::test_account_balances\nFAILED tests/test_binance_exchange_isolated_margin.py::test_create_order[<lambda>-response_payload0-expected_attrs0-expected_fills0]\nFAILED tests/test_binance_exchange_isolated_margin.py::test_create_order[<lambda>-response_payload1-expected_attrs1-expected_fills1]\nFAILED tests/test_binance_exchange_spot.py::test_account_balances - Attribute...\nFAILED tests/test_binance_exchange_spot.py::test_create_order[<lambda>-response_payload0-expected_attrs0-expected_fills0]\nFAILED tests/test_binance_exchange_spot.py::test_create_order[<lambda>-response_payload1-expected_attrs1-expected_fills1]\nFAILED tests/test_binance_exchange_spot.py::test_create_order[<lambda>-response_payload2-expected_attrs2-expected_fills2]\nFAILED tests/test_binance_exchange_spot.py::test_create_order[<lambda>-response_payload3-expected_attrs3-expected_fills3]\nFAILED tests/test_binance_exchange_spot.py::test_create_order[<lambda>-response_payload4-expected_attrs4-expected_fills4]\nFAILED tests/test_binance_exchange_spot.py::test_order_info[pair0-15456494165-None-order_payload0-trades_payload0-expected_attrs0-None]\nFAILED tests/test_binance_exchange_spot.py::test_order_info[pair1-None-kTjLDEuQdFO5VZmWTbAT7b-order_payload1-trades_payload1-expected_attrs1-expected_first_trade1]\nFAILED tests/test_binance_exchange_spot.py::test_error_retrieving_order_info\nFAILED tests/test_binance_exchange_spot.py::test_cancel_order[pair0-15456494165-None-response_payload0-expected_attrs0]\nFAILED tests/test_binance_exchange_spot.py::test_cancel_order[pair1-None-wmJ3mL6libCN8N7rEjCTIk-response_payload1-expected_attrs1]\nFAILED tests/test_binance_exchange_spot.py::test_get_open_orders[pair0-open_orders_payload0-expected_first_open_order0]\nFAILED tests/test_binance_exchange_spot.py::test_create_oco_order[<lambda>-response_payload0-expected_attrs0]\nFAILED tests/test_binance_exchange_spot.py::test_cancel_oco_order[pair0-77862615-None-response_payload0-expected_attrs0]\nFAILED tests/test_binance_exchange_spot.py::test_cancel_oco_order[pair1-None-0A8oF9T3k96l6lqzqGOIfB-response_payload1-expected_attrs1]\nFAILED tests/test_binance_exchange_spot.py::test_oco_order_info[77826706-None-response_payload0-expected_attrs0]\nFAILED tests/test_binance_exchange_spot.py::test_oco_order_info[None-9wQuvisHlbJPQOwrJLhqgn-response_payload1-expected_attrs1]\nFAILED tests/test_binance_order_book.py::test_poll_ok_with_custom_session - T...\nFAILED tests/test_binance_tools.py::test_download_ohlc - AttributeError: 'Non...\nFAILED tests/test_binance_user_data.py::test_websocket_ok_listen_key_channels[cross_margin_account-http://binance.mock/sapi/v1/userDataStream]\nFAILED tests/test_binance_user_data.py::test_websocket_ok_listen_key_channels[isolated_margin_account-http://binance.mock/sapi/v1/userDataStream/isolated]\nFAILED tests/test_bitstamp_client.py::test_get_ohlc_data_using_end - Attribut...\nFAILED tests/test_bitstamp_client.py::test_error_parsing[403-response_body0-403 Forbidden]\nFAILED tests/test_bitstamp_client.py::test_error_parsing[200-response_body1-Order not found]\nFAILED tests/test_bitstamp_client.py::test_error_parsing[200-response_body2-Order not found]\nFAILED tests/test_bitstamp_client.py::test_error_parsing[200-response_body3-Order not found]\nFAILED tests/test_bitstamp_exchange.py::test_balances - AttributeError: 'None...\nFAILED tests/test_bitstamp_exchange.py::test_open_orders - AttributeError: 'N...\nFAILED tests/test_bitstamp_exchange.py::test_order_info[1536137941123072-expected_attrs0]\nFAILED tests/test_bitstamp_exchange.py::test_order_info[99999999-expected_attrs1]\nFAILED tests/test_bitstamp_exchange.py::test_order_status - AttributeError: '...\nFAILED tests/test_bitstamp_exchange.py::test_order_status_without_transactions\nFAILED tests/test_bitstamp_exchange.py::test_order_status_not_found - Attribu...\nFAILED tests/test_bitstamp_exchange.py::test_explicit_session - AttributeErro...\nFAILED tests/test_bitstamp_exchange.py::test_cancel_order - AttributeError: '...\nFAILED tests/test_bitstamp_exchange.py::test_order_requests[<lambda>-buy-expected_amount0-expected_price0-1539419698798592]\nFAILED tests/test_bitstamp_exchange.py::test_order_requests[<lambda>-buy-expected_amount1-expected_price1-1538955091660800]\nFAILED tests/test_bitstamp_exchange.py::test_order_requests[<lambda>-sell-expected_amount2-expected_price2-1540371958628352]\nFAILED tests/test_bitstamp_exchange.py::test_cancel_inexistent_order - Attrib...\nFAILED tests/test_bitstamp_exchange.py::test_bid_ask - AttributeError: 'NoneT...\nFAILED tests/test_bitstamp_exchange.py::test_get_pair_info - AttributeError: ...\nFAILED tests/test_bitstamp_order_book.py::test_poll_ok_with_custom_session - ...\nFAILED tests/test_bitstamp_orders.py::test_websocket_ok[False] - TimeoutError\nFAILED tests/test_bitstamp_orders.py::test_authentication_fails - TimeoutError\nFAILED tests/test_bitstamp_tools.py::test_download_ohlc - AttributeError: 'No...\nFAILED tests/test_bitstamp_trades.py::test_websocket_ok[False] - TimeoutError\n86 failed, 359 passed in 93.93s (0:01:33)\n",
+        "label": "tests-aiohttp-mock-compatibility"
+      },
+      {
+        "stage": "tests",
+        "details": "      )\n            ),\n            bar.BarEvent(\n                dt.local_datetime(2001, 1, 6),\n                bar.Bar(\n                    dt.local_datetime(2001, 1, 5), aapl_pair,\n                    Decimal(5), Decimal(10), Decimal(1), Decimal(5), Decimal(\"100\"),\n                    datetime.timedelta(days=1)\n                )\n            ),\n            # bar.BarEvent(\n            #     dt.local_datetime(2001, 1, 7),\n            #     bar.Bar(\n            #         dt.local_datetime(2001, 1, 6), aapl_p,\n            #         Decimal(500), Decimal(1000), Decimal(100), Decimal(500), Decimal(\"10000\"),\n            #         datetime.timedelta(days=1)\n            #     )\n            # ),\n        ])\n        e.add_bar_source(src)\n    \n        e.subscribe_to_bar_events(orcl_pair, on_bar)\n        e.subscribe_to_bar_events(aapl_pair, on_bar)\n        e.subscribe_to_order_events(on_order_updated)\n    \n        await backtesting_dispatcher.run()\n    \n        for order_id, expected_attrs in expected.items():\n            order_info = await e.get_order_info(order_id)\n            assert not order_info.is_open, order_info\n    \n            # Check fills.\n            expected_fills = expected_attrs[\"fills\"]\n            if expected_fills is not None:\n                assert len(order_info.fills) == len(expected_fills)\n                for i, expected_fill in enumerate(expected_fills):\n                    order_fill = order_info.fills[i]\n                    for attr, expected_value in expected_fill.items():\n>                       assert getattr(order_fill, attr) == expected_value\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntests/test_backtesting_exchange_orders.py:296: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nsrc/basana/backtesting/orders.py:58: in fill_price\n    deprecation_warning(\"Use price instead\")\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nmessage = 'Use price instead'\n\n    def deprecation_warning(message: str):\n>       warnings.warn(message, DeprecationWarning, stacklevel=2)\nE       DeprecationWarning: Use price instead\n\nsrc/basana/core/helpers.py:325: DeprecationWarning\n____________________ test_order_requests[order_plan5-True] _____________________\n\norder_plan = {datetime.date(2000, 1, 4): [(<function <lambda> at 0x10eb14250>, [{'when': datetime.datetime(2000, 1, 4, 0, 0, tzinfo...s_open': False, 'operation': <OrderOperation.BUY: 100>, 'amount': Decimal('1'), 'amount_filled': Decimal('0'), ...}])]}\nimmediate_order_processing = True\nbacktesting_dispatcher = <basana.core.dispatcher.backtesting.BacktestingDispatcher object at 0x11008da90>\n\n    @pytest.mark.parametrize(\"order_plan, immediate_order_processing\", test_order_requests_data)\n    async def test_order_requests(order_plan, immediate_order_processing, backtesting_dispatcher):\n        e = exchange.Exchange(\n            backtesting_dispatcher,\n            {\"USD\": Decimal(\"1e6\")},\n            fee_strategy=fees.Percentage(percentage=Decimal(\"0.25\")),\n            immediate_order_processing=immediate_order_processing\n        )\n        expected = {}\n        order_events = defaultdict(list)\n    \n        async def on_order_updated(event: exchange.OrderEvent):\n            order_events[event.order.id].append(event.order)\n    \n        async def on_bar(bar_event):\n            order_requests = order_plan.get(bar_event.when.date(), [])\n            for order_factory, expected_fills, expected_order_events in order_requests:\n                created_order = await order_factory(e)\n                assert created_order is not None\n                expected[created_order.id] = {\n                    \"fills\": expected_fills,\n                    \"order_events\": expected_order_events,\n                }\n    \n        # ORCL bars.\n        e.add_bar_source(bars.CSVBarSource(orcl_pair, abs_data_path(\"orcl-2000-yahoo-sorted.csv\")))\n    \n        # AAPL bars.\n        src = event.FifoQueueEventSource(events=[\n            bar.BarEvent(\n                dt.local_datetime(2001, 1, 3),\n                bar.Bar(\n                    dt.local_datetime(2001, 1, 2), aapl_pair,\n                    Decimal(5), Decimal(10), Decimal(1), Decimal(5), Decimal(\"100\"),\n                    datetime.timedelta(days=1)\n                )\n            ),\n            bar.BarEvent(\n                dt.local_datetime(2001, 1, 4),\n                bar.Bar(\n                    dt.local_datetime(2001, 1, 3), aapl_pair,\n                    Decimal(5), Decimal(10), Decimal(1), Decimal(5), Decimal(\"100\"),\n                    datetime.timedelta(days=1)\n                )\n            ),\n            bar.BarEvent(\n                dt.local_datetime(2001, 1, 5),\n                bar.Bar(\n                    dt.local_datetime(2001, 1, 4), aapl_pair,\n                    Decimal(5), Decimal(10), Decimal(1), Decimal(5), Decimal(\"100\"),\n                    datetime.timedelta(days=1)\n                )\n            ),\n            bar.BarEvent(\n                dt.local_datetime(2001, 1, 6),\n                bar.Bar(\n                    dt.local_datetime(2001, 1, 5), aapl_pair,\n                    Decimal(5), Decimal(10), Decimal(1), Decimal(5), Decimal(\"100\"),\n                    datetime.timedelta(days=1)\n                )\n            ),\n            # bar.BarEvent(\n            #     dt.local_datetime(2001, 1, 7),\n            #     bar.Bar(\n            #         dt.local_datetime(2001, 1, 6), aapl_p,\n            #         Decimal(500), Decimal(1000), Decimal(100), Decimal(500), Decimal(\"10000\"),\n            #         datetime.timedelta(days=1)\n            #     )\n            # ),\n        ])\n        e.add_bar_source(src)\n    \n        e.subscribe_to_bar_events(orcl_pair, on_bar)\n        e.subscribe_to_bar_events(aapl_pair, on_bar)\n        e.subscribe_to_order_events(on_order_updated)\n    \n        await backtesting_dispatcher.run()\n    \n        for order_id, expected_attrs in expected.items():\n            order_info = await e.get_order_info(order_id)\n            assert not order_info.is_open, order_info\n    \n            # Check fills.\n            expected_fills = expected_attrs[\"fills\"]\n            if expected_fills is not None:\n                assert len(order_info.fills) == len(expected_fills)\n                for i, expected_fill in enumerate(expected_fills):\n                    order_fill = order_info.fills[i]\n                    for attr, expected_value in expected_fill.items():\n>                       assert getattr(order_fill, attr) == expected_value\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntests/test_backtesting_exchange_orders.py:296: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nsrc/basana/backtesting/orders.py:58: in fill_price\n    deprecation_warning(\"Use price instead\")\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nmessage = 'Use price instead'\n\n    def deprecation_warning(message: str):\n>       warnings.warn(message, DeprecationWarning, stacklevel=2)\nE       DeprecationWarning: Use price instead\n\nsrc/basana/core/helpers.py:325: DeprecationWarning\n================================ tests coverage ================================\n_______________ coverage: platform darwin, python 3.14.8-final-0 _______________\n\nName                               Stmts   Miss  Cover   Missing\n----------------------------------------------------------------\nsrc/basana/backtesting/orders.py     319      1    99%   59\n----------------------------------------------------------------\nTOTAL                               5535      1    99%\n\n94 files skipped due to complete coverage.\nFAIL Required test coverage of 100% not reached. Total coverage: 99.98%\n=========================== short test summary info ============================\nFAILED tests/test_backtesting_exchange_orders.py::test_order_requests[order_plan3-False]\nFAILED tests/test_backtesting_exchange_orders.py::test_order_requests[order_plan5-True]\n2 failed, 443 passed in 29.99s\n",
+        "label": "tests-current-api-mock"
+      },
+      {
+        "stage": "lint",
+        "details": "$ uv run --no-sync invoke lint\n\u001b[1;37mmypy src/basana\u001b[0m\nsrc/basana/backtesting/helpers.py:47: note: By default the bodies of untyped functions are not checked, consider using --check-untyped-defs  [annotation-unchecked]\nsrc/basana/backtesting/helpers.py:48: note: By default the bodies of untyped functions are not checked, consider using --check-untyped-defs  [annotation-unchecked]\nSuccess: no issues found in 95 source files\n\u001b[1;37mruff check\u001b[0m\nF401 [*] `urllib.parse.parse_qsl` imported but unused\n --> vendor/aioresponses/src/aioresponses/compat.py:5:26\n  |\n3 | from re import Pattern\n4 | from typing import Dict, Optional, Union  # noqa\n5 | from urllib.parse import parse_qsl, urlencode\n  |                          ^^^^^^^^^\n6 |\n7 | from aiohttp import __version__ as aiohttp_version, StreamReader\n  |\nhelp: Remove unused import\n\nF401 [*] `urllib.parse.urlencode` imported but unused\n --> vendor/aioresponses/src/aioresponses/compat.py:5:37\n  |\n3 | from re import Pattern\n4 | from typing import Dict, Optional, Union  # noqa\n5 | from urllib.parse import parse_qsl, urlencode\n  |                                     ^^^^^^^^^\n6 |\n7 | from aiohttp import __version__ as aiohttp_version, StreamReader\n  |\nhelp: Remove unused import\n\nFound 2 errors.\n[*] 2 fixable with the `--fix` option.\n",
+        "label": "lint-upstream-required"
+      }
+    ],
+    "unresolved_blockers": [],
+    "default_ancestry": {
+      "refs/remotes/origin/develop": true
+    },
+    "merge_in_progress": false,
+    "artifact_files": [
+      "dist/.gitignore",
+      "dist/basana-1.11.tar.gz",
+      "dist/basana-1.11-py3-none-any.whl"
+    ],
+    "committed": true,
+    "pushed": false,
+    "worktree_status": "?? .DS_Store\n"
+  },
+  "note": "Full raw logs are retained in the workspace maintenance evidence, not distributed here. Hashes identify those original logs. A successful build or selected test subset does not imply a full test-suite pass. Commands containing <workspace> describe the original execution environment."
+}

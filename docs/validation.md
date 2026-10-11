@@ -53,29 +53,29 @@ Unsuccessful rows are retained as historical compatibility attempts; they are no
 
 | Command | Exit | Seconds | Evidence |
 |---|---:|---:|---|
-| `uv lock --upgrade --python 3.15` | 0 | 0.58 | [log](../../docs/maintenance-2026-10-12/basana-lock-3.15.log) |
-| `uv sync --all-extras --all-groups --python 3.15 --no-build --no-install-project` | 2 | 3.4 | [log](../../docs/maintenance-2026-10-12/basana-wheel-probe-3.15.log) |
-| `uv lock --upgrade --python 3.14` | 0 | 0.34 | [log](../../docs/maintenance-2026-10-12/basana-lock-3.14.log) |
-| `uv sync --all-extras --all-groups --python 3.14 --no-build --no-install-project` | 2 | 0.04 | [log](../../docs/maintenance-2026-10-12/basana-wheel-probe-3.14.log) |
-| `uv sync --all-extras --all-groups --python 3.14` | 0 | 1.26 | [log](../../docs/maintenance-2026-10-12/basana-sync-3.14.log) |
-| `uv build --python 3.14` | 0 | 0.13 | [log](../../docs/maintenance-2026-10-12/basana-build.log) |
-| `/Users/alex/.local/share/uv/python/cpython-3.14-macos-aarch64-none/bin/python3.14 -m compileall -q src` | 0 | 0.13 | [log](../../docs/maintenance-2026-10-12/basana-compile.log) |
-| `uv run --no-sync python -m pytest --cov=src/basana --cov-config=pyproject.toml` | 1 | 82.29 | [log](../../docs/maintenance-2026-10-12/basana-tests.log) |
-| `uv sync --all-extras --all-groups --python 3.14` | 0 | 0.09 | [log](../../docs/maintenance-2026-10-12/basana-sync-aiohttp-mock-compatibility.log) |
-| `uv run --no-sync python -m pytest --cov=src/basana --cov-config=pyproject.toml --cov-report=term-missing --cov-fail-under=100` | 1 | 97.67 | [log](../../docs/maintenance-2026-10-12/basana-tests-aiohttp-mock-compatibility.log) |
-| `uv sync --all-extras --all-groups --python 3.14 --reinstall-package aioresponses` | 0 | 0.58 | [log](../../docs/maintenance-2026-10-12/basana-sync-mock-rebuild.log) |
-| `uv run --no-sync python -m pytest --cov=src/basana --cov-config=pyproject.toml --cov-report=term-missing --cov-fail-under=100` | 1 | 32.4 | [log](../../docs/maintenance-2026-10-12/basana-tests-current-api-mock.log) |
-| `uv run --no-sync python -m pytest --cov=src/basana --cov-config=pyproject.toml --cov-report=term-missing --cov-fail-under=100` | 0 | 29.81 | [log](../../docs/maintenance-2026-10-12/basana-tests-deprecated-api-assertion.log) |
-| `uv run --no-sync python -m compileall -q src` | 0 | 0.08 | [log](../../docs/maintenance-2026-10-12/basana-compile-final.log) |
-| `uv build --python 3.14` | 0 | 0.13 | [log](../../docs/maintenance-2026-10-12/basana-build-final.log) |
-| `uv run --no-sync python -c import sys,importlib.metadata,json; print(sys.version); print(json.dumps({d.metadata["Name"]: d.version for d in importlib.metadata.distributions()},indent=2,sort_keys=True))` | 0 | 0.18 | [log](../../docs/maintenance-2026-10-12/basana-versions-final.log) |
-| `uv sync --directory /tmp/trading-python315-probes/basana --all-extras --all-groups --python 3.15` | 1 | 4.5 | [log](../../docs/maintenance-2026-10-12/basana-python315-source-probe.log) |
-| `uv run --no-sync invoke lint` | 1 | 11.58 | [log](../../docs/maintenance-2026-10-12/basana-lint-upstream-required.log) |
-| `uv run --no-sync invoke lint` | 0 | 0.68 | [log](../../docs/maintenance-2026-10-12/basana-lint-owned-sources.log) |
-| `env MACOSX_DEPLOYMENT_TARGET=27.0 uv sync --directory /tmp/trading-python315-probes/basana --all-extras --all-groups --python 3.15` | 1 | 4.27 | [log](../../docs/maintenance-2026-10-12/basana-python315-host-deployment-probe.log) |
-| `uv build --python 3.14` | 0 | 0.21 | [log](../../docs/maintenance-2026-10-12/basana-build-vendor-source-archive.log) |
+| `uv lock --upgrade --python 3.15` | 0 | 0.58 | [check record](maintenance/index.html) |
+| `uv sync --all-extras --all-groups --python 3.15 --no-build --no-install-project` | 2 | 3.4 | [check record](maintenance/index.html) |
+| `uv lock --upgrade --python 3.14` | 0 | 0.34 | [check record](maintenance/index.html) |
+| `uv sync --all-extras --all-groups --python 3.14 --no-build --no-install-project` | 2 | 0.04 | [check record](maintenance/index.html) |
+| `uv sync --all-extras --all-groups --python 3.14` | 0 | 1.26 | [check record](maintenance/index.html) |
+| `uv build --python 3.14` | 0 | 0.13 | [check record](maintenance/index.html) |
+| `/Users/alex/.local/share/uv/python/cpython-3.14-macos-aarch64-none/bin/python3.14 -m compileall -q src` | 0 | 0.13 | [check record](maintenance/index.html) |
+| `uv run --no-sync python -m pytest --cov=src/basana --cov-config=pyproject.toml` | 1 | 82.29 | [check record](maintenance/index.html) |
+| `uv sync --all-extras --all-groups --python 3.14` | 0 | 0.09 | [check record](maintenance/index.html) |
+| `uv run --no-sync python -m pytest --cov=src/basana --cov-config=pyproject.toml --cov-report=term-missing --cov-fail-under=100` | 1 | 97.67 | [check record](maintenance/index.html) |
+| `uv sync --all-extras --all-groups --python 3.14 --reinstall-package aioresponses` | 0 | 0.58 | [check record](maintenance/index.html) |
+| `uv run --no-sync python -m pytest --cov=src/basana --cov-config=pyproject.toml --cov-report=term-missing --cov-fail-under=100` | 1 | 32.4 | [check record](maintenance/index.html) |
+| `uv run --no-sync python -m pytest --cov=src/basana --cov-config=pyproject.toml --cov-report=term-missing --cov-fail-under=100` | 0 | 29.81 | [check record](maintenance/index.html) |
+| `uv run --no-sync python -m compileall -q src` | 0 | 0.08 | [check record](maintenance/index.html) |
+| `uv build --python 3.14` | 0 | 0.13 | [check record](maintenance/index.html) |
+| `uv run --no-sync python -c import sys,importlib.metadata,json; print(sys.version); print(json.dumps({d.metadata["Name"]: d.version for d in importlib.metadata.distributions()},indent=2,sort_keys=True))` | 0 | 0.18 | [check record](maintenance/index.html) |
+| `uv sync --directory /tmp/trading-python315-probes/basana --all-extras --all-groups --python 3.15` | 1 | 4.5 | [check record](maintenance/index.html) |
+| `uv run --no-sync invoke lint` | 1 | 11.58 | [check record](maintenance/index.html) |
+| `uv run --no-sync invoke lint` | 0 | 0.68 | [check record](maintenance/index.html) |
+| `env MACOSX_DEPLOYMENT_TARGET=27.0 uv sync --directory /tmp/trading-python315-probes/basana --all-extras --all-groups --python 3.15` | 1 | 4.27 | [check record](maintenance/index.html) |
+| `uv build --python 3.14` | 0 | 0.21 | [check record](maintenance/index.html) |
 
-The versions-final log records the exact interpreter patch release and every installed dependency version. The machine-readable [result](../../docs/maintenance-2026-10-12/basana-result.json) includes branch/default ancestry, status, artifacts and unresolved checks.
+The versions-final log records the exact interpreter patch release and every installed dependency version. The machine-readable [verification record](maintenance/verification.json) includes branch/default ancestry, status, artifacts and unresolved checks.
 
 ## Dependency floor refresh
 
