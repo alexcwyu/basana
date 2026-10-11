@@ -34,7 +34,8 @@ async def test_trading_signal_op(backtesting_dispatcher):
         trading_signals.append(trading_signal)
 
     source = TradingSignalSource(backtesting_dispatcher)
-    source.push(trading_signal.TradingSignal(dt.local_now(), enums.OrderOperation.BUY, Pair("BTC", "USDT")))
+    with pytest.deprecated_call(match="Support for bs.OrderOperation"):
+        source.push(trading_signal.TradingSignal(dt.local_now(), enums.OrderOperation.BUY, Pair("BTC", "USDT")))
     source.subscribe_to_trading_signals(on_trading_signal)
     await backtesting_dispatcher.run()
     assert len(trading_signals) == 1

@@ -28,7 +28,7 @@ def lint(c):
 @task(lint)
 def test(c, html_report=False):
     # Execute testcases.
-    cmd = "pytest -vv --cov --cov-config=pyproject.toml --durations=10"
+    cmd = "pytest -vv --cov=src/basana --cov-config=pyproject.toml --durations=10"
     if html_report:
         cmd += " --cov-report=html:cov_html"
     c.run(cmd, echo=cmd_echo)

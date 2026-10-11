@@ -280,7 +280,7 @@ class OrderManager:
         balance_updates = ValueMap(fill.balance_updates)
         balance_updates.prune()
         logger.debug(logs.StructuredMessage(
-            "Order fill details before fees", order_id=order.id, fill_price=fill.fill_price,
+            "Order fill details before fees", order_id=order.id, fill_price=fill.price,
             balance_updates=balance_updates
             
         ))

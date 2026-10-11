@@ -1,0 +1,13 @@
+[build-system]
+requires = ["hatchling>=1.32.4"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aioresponses"
+version = "0.7.9+ayu1"
+requires-python = ">=3.13"
+license-files = ["LICENSE"]
+dependencies = ["packaging>=22.0", "aiohttp<4.0,>=3.8"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/aioresponses"]

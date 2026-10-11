@@ -29,7 +29,8 @@ def abs_data_path(filename):
 
 
 def load_json(filename):
-    return json.load(open(abs_data_path(filename)))
+    with open(abs_data_path(filename)) as source:
+        return json.load(source)
 
 
 def safe_round(v, precision):

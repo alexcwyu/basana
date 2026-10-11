@@ -52,10 +52,10 @@ def open_file_with_detected_encoding(filename, default_encoding='utf-8'):
             break
 
     # Re-open the file with the detected encoding and skip the bom.
-    f = open(filename, 'r', encoding=encoding)
-    if offset:
-        f.seek(offset)
-    yield f
+    with open(filename, 'r', encoding=encoding) as f:
+        if offset:
+            f.seek(offset)
+        yield f
 
 
 class RowParser(metaclass=abc.ABCMeta):

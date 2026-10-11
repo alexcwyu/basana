@@ -1,3 +1,38 @@
+<!-- ayu-maintenance-2026-10-12 -->
+# Current uv development workflow
+
+The maintained branch is `feature/ayu_develop`. The selected interpreter is Python `3.14`; `requires-python` records the range that was actually resolved. Python 3.15 was attempted first. Dependency/native-wheel failures and fallback evidence are recorded in [validation.md](validation.md).
+
+```sh
+export UV_PYTHON_PREFERENCE=only-managed
+uv python install 3.14
+uv lock --check
+uv sync --frozen --all-extras --all-groups
+uv run --no-sync python -m compileall -q src
+uv build
+uv run --no-sync python -m pytest --cov=src/basana --cov-config=pyproject.toml --cov-fail-under=100
+```
+
+Use `uv lock --upgrade` when intentionally refreshing dependencies, then review `pyproject.toml`, `uv.lock`, and the existing full test suite. The dependency floors were refreshed from current PyPI release metadata while preserving meaningful upstream upper bounds. Compatibility exceptions are documented with their resolver/test evidence rather than hidden by disabling tests.
+
+The `src/` layout and build-backend package discovery preserve public import names. Wheel/sdist resources include the source-associated data and templates. Optional vendor SDKs, live credentials, databases and graphical/native libraries retain their original runtime requirements. Examples and test fixtures are not promoted into the library API.
+
+<!-- prior-development-notes -->
+
+## Compatibility decisions
+
+- The full existing suite passes 445 cases and covers every one of 5535 source statements (100.00%). Deprecated API assertions use deprecated_call and retain their original value assertions.
+- The simulator logs use the current fill.price field; log timestamps are included in pytest log formatting so the existing logging assertion remains meaningful. CSV/JSON input files close deterministically.
+- Latest CCXT requires aiohttp 3.14; current aioresponses 0.7.9 needs the documented stream_writer mock patch. See vendor/aioresponses/PROVENANCE.md and original retained license.
+- The source-build Python 3.15 attempt fails compiling pycares 5.1.0, required by aiohttp speedups. Native build evidence is retained.
+- Invoke lint validates 95 owned Python files. Verified third-party vendor source retains its upstream lint conventions and is excluded from the project Ruff scan.
+
+- [Verified dependency source and license: aioresponses](../vendor/aioresponses/PROVENANCE.md)
+
+
+
+
+
 # Basana -- Development Guide
 
 ## Setup
@@ -74,21 +109,21 @@ async def on_bar_event(event):
 
 async def main():
     dispatcher = backtesting_dispatcher()
-    
+
     pair = Pair("BTC", "USDT")
     exchange = backtesting_exchange.Exchange(
         dispatcher,
         {pair: backtesting_exchange.PairInfo(Decimal("0.001"), Decimal("0.01"))},
         initial_balances={"USDT": Decimal("10000")},
     )
-    
+
     # Load CSV data
     exchange.add_bar_source(
         csv_bars.BarSource(pair, "btc_usdt_1h.csv", "1h")
     )
-    
+
     exchange.subscribe_to_bar_events(pair, on_bar_event)
-    
+
     await dispatcher.run()
 
 asyncio.run(main())
@@ -108,15 +143,15 @@ async def on_bar_event(event):
 
 async def main():
     dispatcher = realtime_dispatcher()
-    
+
     exchange = binance_exchange.Exchange(
         dispatcher,
         config.Defaults(api_key="...", api_secret="...")
     )
-    
+
     pair = Pair("BTC", "USDT")
     exchange.subscribe_to_bar_events(pair, "1h", on_bar_event)
-    
+
     await dispatcher.run()
 
 asyncio.run(main())
@@ -136,10 +171,10 @@ class MySource(event.EventSource):
     def __init__(self):
         super().__init__()
         self._events = []
-    
+
     def push(self, event):
         self._events.append(event)
-    
+
     def pop(self):
         if self._events:
             return self._events.pop(0)
@@ -155,15 +190,15 @@ class MyProducer(event.Producer):
     def __init__(self, source):
         super().__init__()
         self._source = source
-    
+
     async def initialize(self):
         # Open connections, load data
         pass
-    
+
     async def finalize(self):
         # Clean up connections
         pass
-    
+
     async def main(self):
         # Active data generation loop
         while True:

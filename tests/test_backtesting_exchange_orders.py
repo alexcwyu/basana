@@ -293,7 +293,11 @@ async def test_order_requests(order_plan, immediate_order_processing, backtestin
             for i, expected_fill in enumerate(expected_fills):
                 order_fill = order_info.fills[i]
                 for attr, expected_value in expected_fill.items():
-                    assert getattr(order_fill, attr) == expected_value
+                    if attr == "fill_price":
+                        with pytest.deprecated_call():
+                            assert getattr(order_fill, attr) == expected_value
+                    else:
+                        assert getattr(order_fill, attr) == expected_value
 
         # Check order events
         expected_events = expected_attrs["order_events"]
