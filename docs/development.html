@@ -1,19 +1,12 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Current uv development workflow</title><style>
-:root{color-scheme:light dark;--bg:#f6f8fa;--paper:#fff;--fg:#182332;--muted:#526274;--line:#d9e0e7;--accent:#1769aa}
-@media(prefers-color-scheme:dark){:root{--bg:#111820;--paper:#192330;--fg:#e6edf3;--muted:#a0b3c5;--line:#344354;--accent:#71b7ee}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 system-ui,-apple-system,sans-serif}
-header{border-bottom:1px solid var(--line);padding:16px max(24px,calc((100vw - 1120px)/2));background:var(--paper);font-size:14px}
-main{max-width:1120px;margin:32px auto;padding:40px 48px;background:var(--paper);border:1px solid var(--line);border-radius:12px}
-h1,h2,h3,h4{line-height:1.3;scroll-margin-top:24px}h1{font-size:2.1rem}h2{margin-top:2.5em;border-bottom:1px solid var(--line);padding-bottom:.35em}h3{margin-top:1.8em}
-a{color:var(--accent);text-underline-offset:3px}code{font:14px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--bg);border-radius:4px;padding:2px 5px}pre{overflow:auto;border:1px solid var(--line);background:var(--bg);padding:16px;border-radius:7px}pre code{padding:0;background:none}
-table{border-collapse:collapse;width:100%;display:block;overflow-x:auto;font-size:14px}th,td{border:1px solid var(--line);padding:9px 12px;text-align:left}th{background:var(--bg)}blockquote{border-left:4px solid var(--accent);margin:16px 0;padding:4px 20px;color:var(--muted)}
-.diagram{overflow-x:auto;margin:24px 0;padding:20px;border:1px solid var(--line);border-radius:8px;background:#fff;color:#182332}.mermaid{border:0;background:none;text-align:center}.mermaid svg{height:auto;max-width:100%}details{font-size:13px;color:#526274}.headerlink{margin-left:.4em;font-size:.7em;text-decoration:none;color:var(--muted)}
-@media(max-width:740px){main{margin:0;padding:24px 18px;border:0;border-radius:0}h1{font-size:1.7rem}.diagram{padding:8px}}
-@media print{header,details,.headerlink{display:none}body,main{background:#fff;color:#000;border:0;margin:0;padding:0}a{color:#000}.diagram,pre{break-inside:avoid}}
-</style></head><body><header>Engineering documentation · <a href="development.md">Markdown source</a></header><main><!-- ayu-maintenance-2026-10-12 -->
-<h1 id="current-uv-development-workflow">Current uv development workflow<a class="headerlink" href="#current-uv-development-workflow" title="Permanent link">&para;</a></h1>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Current uv development workflow</title><style>html{color-scheme:light dark}body{margin:0;background:#f5f7fa;color:#172333;font:16px/1.7 system-ui,sans-serif}main{max-width:1120px;margin:28px auto;background:white;padding:40px;border:1px solid #dbe2ea;border-radius:10px}h1,h2,h3{line-height:1.25}h2{margin-top:2em;border-bottom:1px solid #dbe2ea;padding-bottom:.4em}a{color:#1769aa}pre{overflow:auto;padding:16px;background:#f5f7fa;border:1px solid #dbe2ea;border-radius:6px}code{font:14px/1.6 ui-monospace,monospace}table{border-collapse:collapse;display:block;overflow:auto}th,td{border:1px solid #dbe2ea;padding:8px 12px;text-align:left;vertical-align:top}blockquote{margin-left:0;border-left:4px solid #1769aa;padding-left:18px}@media(max-width:700px){main{margin:8px;padding:18px}body{font-size:15px}}@media(prefers-color-scheme:dark){body{background:#111820;color:#e7edf5}main{background:#192330;border-color:#344354}pre{background:#111820}a{color:#78b9ef}th,td,h2,pre{border-color:#344354}}@media print{main{margin:0;border:0;padding:0}a{color:inherit}pre,table{overflow:visible}}.diagram{background:#fff;color:#172333;padding:12px;border:1px solid #dbe2ea;border-radius:6px;overflow:auto}</style></head><body><main><!-- ayu-maintenance-2026-10-12 -->
+
+<!-- current-documentation-provenance -->
+<p>Documentation reviewed: 2026-10-13 · Git source base: <code>7eb2c1c3a67bd569d1bff695609c87e3f30bca32</code> · <a href="ayu-develop.md">Current architecture and feature guide</a>.
+Historical execution commands/results below retain their original dates and scope; this metadata update is not a new application test run.</p>
+<!-- /current-documentation-provenance -->
+
+<h1 id="current-uv-development-workflow">Current uv development workflow</h1>
 <p>The maintained branch is <code>feature/ayu_develop</code>. The selected interpreter is Python <code>3.14</code>; <code>requires-python</code> records the range that was actually resolved. Python 3.15 was attempted first. Dependency/native-wheel failures and fallback evidence are recorded in <a href="validation.md">validation.md</a>.</p>
 <pre><code class="language-sh">export UV_PYTHON_PREFERENCE=only-managed
 uv python install 3.14
@@ -27,7 +20,7 @@ uv run --no-sync python -m pytest --cov=src/basana --cov-config=pyproject.toml -
 <p>The <code>src/</code> layout and build-backend package discovery preserve public import names. Wheel/sdist resources include the source-associated data and templates. Optional vendor SDKs, live credentials, databases and graphical/native libraries retain their original runtime requirements. Examples and test fixtures are not promoted into the library API.</p>
 <!-- prior-development-notes -->
 
-<h2 id="compatibility-decisions">Compatibility decisions<a class="headerlink" href="#compatibility-decisions" title="Permanent link">&para;</a></h2>
+<h2 id="compatibility-decisions">Compatibility decisions</h2>
 <ul>
 <li>The full existing suite passes 445 cases and covers every one of 5535 source statements (100.00%). Deprecated API assertions use deprecated_call and retain their original value assertions.</li>
 <li>The simulator logs use the current fill.price field; log timestamps are included in pytest log formatting so the existing logging assertion remains meaningful. CSV/JSON input files close deterministically.</li>
@@ -40,15 +33,15 @@ uv run --no-sync python -m pytest --cov=src/basana --cov-config=pyproject.toml -
 <p><a href="../vendor/aioresponses/PROVENANCE.md">Verified dependency source and license: aioresponses</a></p>
 </li>
 </ul>
-<h1 id="basana-development-guide">Basana -- Development Guide<a class="headerlink" href="#basana-development-guide" title="Permanent link">&para;</a></h1>
-<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
-<h3 id="using-uv-recommended">Using uv (recommended)<a class="headerlink" href="#using-uv-recommended" title="Permanent link">&para;</a></h3>
+<h1 id="basana-development-guide">Basana -- Development Guide</h1>
+<h2 id="setup">Setup</h2>
+<h3 id="using-uv-recommended">Using uv (recommended)</h3>
 <pre><code class="language-bash">uv sync --all-extras
 </code></pre>
-<h3 id="using-invoke">Using Invoke<a class="headerlink" href="#using-invoke" title="Permanent link">&para;</a></h3>
+<h3 id="using-invoke">Using Invoke</h3>
 <pre><code class="language-bash">inv create-virtualenv
 </code></pre>
-<h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
+<h2 id="testing">Testing</h2>
 <pre><code class="language-bash"># Run all tests with coverage
 uv run pytest -vv --cov --cov-config=setup.cfg --durations=10
 
@@ -62,7 +55,7 @@ uv run pytest tests/test_file.py::test_function_name -vv
 inv test --html-report
 </code></pre>
 <p>Coverage requirement: <strong>100%</strong> (enforced in <code>setup.cfg</code>).</p>
-<h2 id="static-analysis">Static Analysis<a class="headerlink" href="#static-analysis" title="Permanent link">&para;</a></h2>
+<h2 id="static-analysis">Static Analysis</h2>
 <pre><code class="language-bash"># Type checking
 uv run mypy basana
 
@@ -72,7 +65,7 @@ uv run ruff check
 # Combined lint + test
 inv test
 </code></pre>
-<h2 id="code-standards">Code Standards<a class="headerlink" href="#code-standards" title="Permanent link">&para;</a></h2>
+<h2 id="code-standards">Code Standards</h2>
 <ul>
 <li><strong>Line length</strong>: 120 characters</li>
 <li><strong>Linter</strong>: Ruff</li>
@@ -81,7 +74,7 @@ inv test
 <li><strong>Timezone awareness</strong>: All datetimes must have timezone info</li>
 <li><strong>Python version</strong>: 3.13+</li>
 </ul>
-<h2 id="building-a-backtest-strategy">Building a Backtest Strategy<a class="headerlink" href="#building-a-backtest-strategy" title="Permanent link">&para;</a></h2>
+<h2 id="building-a-backtest-strategy">Building a Backtest Strategy</h2>
 <pre><code class="language-python">import asyncio
 from decimal import Decimal
 from basana.backtesting import exchange as backtesting_exchange
@@ -92,24 +85,24 @@ async def on_bar_event(event):
     # Strategy logic here
     if event.bar.close &gt; event.bar.open:
         await exchange.create_market_order(
-            Pair(&quot;BTC&quot;, &quot;USDT&quot;),
+            Pair("BTC", "USDT"),
             basana.OrderOperation.BUY,
-            Decimal(&quot;0.001&quot;)
+            Decimal("0.001")
         )
 
 async def main():
     dispatcher = backtesting_dispatcher()
 
-    pair = Pair(&quot;BTC&quot;, &quot;USDT&quot;)
+    pair = Pair("BTC", "USDT")
     exchange = backtesting_exchange.Exchange(
         dispatcher,
-        {pair: backtesting_exchange.PairInfo(Decimal(&quot;0.001&quot;), Decimal(&quot;0.01&quot;))},
-        initial_balances={&quot;USDT&quot;: Decimal(&quot;10000&quot;)},
+        {pair: backtesting_exchange.PairInfo(Decimal("0.001"), Decimal("0.01"))},
+        initial_balances={"USDT": Decimal("10000")},
     )
 
     # Load CSV data
     exchange.add_bar_source(
-        csv_bars.BarSource(pair, &quot;btc_usdt_1h.csv&quot;, &quot;1h&quot;)
+        csv_bars.BarSource(pair, "btc_usdt_1h.csv", "1h")
     )
 
     exchange.subscribe_to_bar_events(pair, on_bar_event)
@@ -118,7 +111,7 @@ async def main():
 
 asyncio.run(main())
 </code></pre>
-<h2 id="live-trading-with-binance">Live Trading with Binance<a class="headerlink" href="#live-trading-with-binance" title="Permanent link">&para;</a></h2>
+<h2 id="live-trading-with-binance">Live Trading with Binance</h2>
 <pre><code class="language-python">import asyncio
 from decimal import Decimal
 from basana import realtime_dispatcher, Pair
@@ -133,17 +126,17 @@ async def main():
 
     exchange = binance_exchange.Exchange(
         dispatcher,
-        config.Defaults(api_key=&quot;...&quot;, api_secret=&quot;...&quot;)
+        config.Defaults(api_key="...", api_secret="...")
     )
 
-    pair = Pair(&quot;BTC&quot;, &quot;USDT&quot;)
-    exchange.subscribe_to_bar_events(pair, &quot;1h&quot;, on_bar_event)
+    pair = Pair("BTC", "USDT")
+    exchange.subscribe_to_bar_events(pair, "1h", on_bar_event)
 
     await dispatcher.run()
 
 asyncio.run(main())
 </code></pre>
-<h2 id="implementing-a-custom-eventsource">Implementing a Custom EventSource<a class="headerlink" href="#implementing-a-custom-eventsource" title="Permanent link">&para;</a></h2>
+<h2 id="implementing-a-custom-eventsource">Implementing a Custom EventSource</h2>
 <pre><code class="language-python">from basana.core import event
 
 class MyEvent(event.Event):
@@ -164,7 +157,7 @@ class MySource(event.EventSource):
             return self._events.pop(0)
         return None
 </code></pre>
-<h2 id="implementing-a-custom-producer">Implementing a Custom Producer<a class="headerlink" href="#implementing-a-custom-producer" title="Permanent link">&para;</a></h2>
+<h2 id="implementing-a-custom-producer">Implementing a Custom Producer</h2>
 <pre><code class="language-python">from basana.core import event
 
 class MyProducer(event.Producer):
@@ -186,7 +179,7 @@ class MyProducer(event.Producer):
             data = await self.fetch_data()
             self._source.push(MyEvent(basana.utc_now(), data))
 </code></pre>
-<h2 id="downloading-historical-data">Downloading Historical Data<a class="headerlink" href="#downloading-historical-data" title="Permanent link">&para;</a></h2>
+<h2 id="downloading-historical-data">Downloading Historical Data</h2>
 <pre><code class="language-bash"># Binance
 python -m basana.external.binance.tools.download_bars \
   -c BTC/USDT -p 1h -s 2024-01-01 -e 2024-01-31 -o data.csv
@@ -195,18 +188,18 @@ python -m basana.external.binance.tools.download_bars \
 python -m basana.external.bitstamp.tools.download_bars \
   -c BTC/USD -p 1h -s 2024-01-01 -e 2024-01-31 -o data.csv
 </code></pre>
-<h2 id="configuring-backtesting">Configuring Backtesting<a class="headerlink" href="#configuring-backtesting" title="Permanent link">&para;</a></h2>
-<h3 id="custom-fees">Custom Fees<a class="headerlink" href="#custom-fees" title="Permanent link">&para;</a></h3>
+<h2 id="configuring-backtesting">Configuring Backtesting</h2>
+<h3 id="custom-fees">Custom Fees</h3>
 <pre><code class="language-python">from basana.backtesting import fees
 
 exchange = backtesting_exchange.Exchange(
     dispatcher,
     pair_info,
     initial_balances=balances,
-    fee_strategy=fees.Percentage(Decimal(&quot;0.001&quot;)),  # 0.1% fee
+    fee_strategy=fees.Percentage(Decimal("0.001")),  # 0.1% fee
 )
 </code></pre>
-<h3 id="custom-liquidity-model">Custom Liquidity Model<a class="headerlink" href="#custom-liquidity-model" title="Permanent link">&para;</a></h3>
+<h3 id="custom-liquidity-model">Custom Liquidity Model</h3>
 <pre><code class="language-python">from basana.backtesting import liquidity
 
 exchange = backtesting_exchange.Exchange(
@@ -214,12 +207,12 @@ exchange = backtesting_exchange.Exchange(
     pair_info,
     initial_balances=balances,
     liquidity_strategy=liquidity.VolumeShareSlippage(
-        volume_limit=Decimal(&quot;0.025&quot;),
-        price_impact=Decimal(&quot;0.1&quot;)
+        volume_limit=Decimal("0.025"),
+        price_impact=Decimal("0.1")
     ),
 )
 </code></pre>
-<h2 id="important-notes">Important Notes<a class="headerlink" href="#important-notes" title="Permanent link">&para;</a></h2>
+<h2 id="important-notes">Important Notes</h2>
 <ul>
 <li>All datetime objects must have timezone information (use <code>basana.utc_now()</code>)</li>
 <li>Event processing in backtesting is strictly chronological</li>
@@ -227,8 +220,8 @@ exchange = backtesting_exchange.Exchange(
 <li>Rate limits are enforced via <code>TokenBucketLimiter</code> for live exchanges</li>
 <li>Use <code>Decimal</code> for all monetary amounts (not float)</li>
 </ul>
-<h2 id="configuration-reference">Configuration Reference<a class="headerlink" href="#configuration-reference" title="Permanent link">&para;</a></h2>
-<h3 id="exchange-constructor-parameters">Exchange Constructor Parameters<a class="headerlink" href="#exchange-constructor-parameters" title="Permanent link">&para;</a></h3>
+<h2 id="configuration-reference">Configuration Reference</h2>
+<h3 id="exchange-constructor-parameters">Exchange Constructor Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -265,7 +258,7 @@ exchange = backtesting_exchange.Exchange(
 </tr>
 </tbody>
 </table>
-<h3 id="pairinfo-parameters">PairInfo Parameters<a class="headerlink" href="#pairinfo-parameters" title="Permanent link">&para;</a></h3>
+<h3 id="pairinfo-parameters">PairInfo Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -290,7 +283,7 @@ exchange = backtesting_exchange.Exchange(
 </tr>
 </tbody>
 </table>
-<h3 id="fee-strategies-basanabacktestingfees">Fee Strategies (<code>basana.backtesting.fees</code>)<a class="headerlink" href="#fee-strategies-basanabacktestingfees" title="Permanent link">&para;</a></h3>
+<h3 id="fee-strategies-basanabacktestingfees">Fee Strategies (<code>basana.backtesting.fees</code>)</h3>
 <table>
 <thead>
 <tr>
@@ -312,7 +305,7 @@ exchange = backtesting_exchange.Exchange(
 </tr>
 </tbody>
 </table>
-<h3 id="liquidity-strategies-basanabacktestingliquidity">Liquidity Strategies (<code>basana.backtesting.liquidity</code>)<a class="headerlink" href="#liquidity-strategies-basanabacktestingliquidity" title="Permanent link">&para;</a></h3>
+<h3 id="liquidity-strategies-basanabacktestingliquidity">Liquidity Strategies (<code>basana.backtesting.liquidity</code>)</h3>
 <table>
 <thead>
 <tr>
@@ -334,7 +327,7 @@ exchange = backtesting_exchange.Exchange(
 </tr>
 </tbody>
 </table>
-<h3 id="csv-barsource-parameters">CSV BarSource Parameters<a class="headerlink" href="#csv-barsource-parameters" title="Permanent link">&para;</a></h3>
+<h3 id="csv-barsource-parameters">CSV BarSource Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -377,7 +370,7 @@ exchange = backtesting_exchange.Exchange(
 </tr>
 </tbody>
 </table>
-<h3 id="dispatcher-settings">Dispatcher Settings<a class="headerlink" href="#dispatcher-settings" title="Permanent link">&para;</a></h3>
+<h3 id="dispatcher-settings">Dispatcher Settings</h3>
 <table>
 <thead>
 <tr>
@@ -396,24 +389,24 @@ exchange = backtesting_exchange.Exchange(
 </tr>
 </tbody>
 </table>
-<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
-<h3 id="assertionerror-all-datetimes-must-have-timezone-info"><code>AssertionError: All datetimes must have timezone info</code><a class="headerlink" href="#assertionerror-all-datetimes-must-have-timezone-info" title="Permanent link">&para;</a></h3>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="assertionerror-all-datetimes-must-have-timezone-info"><code>AssertionError: All datetimes must have timezone info</code></h3>
 <p>Basana enforces timezone-aware datetimes everywhere. Use <code>datetime.timezone.utc</code> or <code>basana.core.dt</code> utilities. CSV data is parsed as UTC by default; pass <code>tzinfo</code> to <code>BarSource</code> if your data uses a different timezone.</p>
-<h3 id="decimalinvalidoperation-or-decimal-conversion-errors"><code>decimal.InvalidOperation</code> or <code>Decimal</code> conversion errors<a class="headerlink" href="#decimalinvalidoperation-or-decimal-conversion-errors" title="Permanent link">&para;</a></h3>
+<h3 id="decimalinvalidoperation-or-decimal-conversion-errors"><code>decimal.InvalidOperation</code> or <code>Decimal</code> conversion errors</h3>
 <p>All monetary amounts must use <code>Decimal</code>, not <code>float</code>. Write <code>Decimal("0.001")</code> instead of <code>Decimal(0.001)</code> -- the string form avoids floating-point representation issues.</p>
-<h3 id="backtest-produces-no-trades-or-events">Backtest produces no trades or events<a class="headerlink" href="#backtest-produces-no-trades-or-events" title="Permanent link">&para;</a></h3>
+<h3 id="backtest-produces-no-trades-or-events">Backtest produces no trades or events</h3>
 <p>Bars with zero volume are silently skipped by the CSV parser. Verify your CSV data has non-zero volume values. Also check that the <code>datetime</code> column format matches <code>%Y-%m-%d %H:%M:%S</code>.</p>
-<h3 id="error-not-enough-liquidity"><code>Error: Not enough liquidity</code><a class="headerlink" href="#error-not-enough-liquidity" title="Permanent link">&para;</a></h3>
+<h3 id="error-not-enough-liquidity"><code>Error: Not enough liquidity</code></h3>
 <p>When using <code>VolumeShareImpact</code>, orders exceeding the <code>volume_limit_pct</code> of the bar's volume will be rejected. Reduce order size or increase <code>volume_limit_pct</code>. Switch to <code>InfiniteLiquidity</code> for testing without volume constraints.</p>
-<h3 id="runtimeerror-event-loop-is-already-running"><code>RuntimeError: Event loop is already running</code><a class="headerlink" href="#runtimeerror-event-loop-is-already-running" title="Permanent link">&para;</a></h3>
+<h3 id="runtimeerror-event-loop-is-already-running"><code>RuntimeError: Event loop is already running</code></h3>
 <p>This occurs when calling <code>asyncio.run()</code> inside Jupyter notebooks or another async context. Use <code>await dispatcher.run()</code> directly, or use <code>nest_asyncio</code> to patch the event loop: <code>import nest_asyncio; nest_asyncio.apply()</code>.</p>
-<h3 id="live-exchange-websocket-disconnects">Live exchange WebSocket disconnects<a class="headerlink" href="#live-exchange-websocket-disconnects" title="Permanent link">&para;</a></h3>
+<h3 id="live-exchange-websocket-disconnects">Live exchange WebSocket disconnects</h3>
 <p>WebSocket connections can drop due to network issues or exchange maintenance. Implement reconnection logic in your <code>Producer.main()</code> loop with exponential backoff. Check <code>TokenBucketLimiter</code> configuration to avoid rate-limit bans.</p>
-<h3 id="importerror-no-module-named-basanaexternalbinance"><code>ImportError: No module named 'basana.external.binance'</code><a class="headerlink" href="#importerror-no-module-named-basanaexternalbinance" title="Permanent link">&para;</a></h3>
+<h3 id="importerror-no-module-named-basanaexternalbinance"><code>ImportError: No module named 'basana.external.binance'</code></h3>
 <p>Install with extras: <code>pip install basana[binance]</code> or <code>uv sync --all-extras</code>. The exchange integrations are optional dependencies.</p>
-<h3 id="orders-not-filling-in-backtesting">Orders not filling in backtesting<a class="headerlink" href="#orders-not-filling-in-backtesting" title="Permanent link">&para;</a></h3>
+<h3 id="orders-not-filling-in-backtesting">Orders not filling in backtesting</h3>
 <p>Limit orders only fill when the bar's price range covers the limit price. StopLimit orders require the stop price to be hit first. Check your order prices against the bar's high/low range.</p>
-<h2 id="security-considerations">Security Considerations<a class="headerlink" href="#security-considerations" title="Permanent link">&para;</a></h2>
+<h2 id="security-considerations">Security Considerations</h2>
 <ul>
 <li><strong>API key management</strong>: For live trading on Binance or Bitstamp, pass API keys via constructor parameters or environment variables. Never hardcode keys in source files. Use read-only keys for data-only access.</li>
 <li><strong>Rate limiting</strong>: The <code>TokenBucketLimiter</code> enforces exchange rate limits to prevent IP bans. Do not bypass or increase rate limits beyond exchange-specified thresholds.</li>
@@ -423,15 +416,12 @@ exchange = backtesting_exchange.Exchange(
 <li><strong>Dependency audit</strong>: Review <code>aiohttp</code> and exchange client dependencies periodically. Pin versions in <code>uv.lock</code> to prevent supply-chain attacks via transitive dependencies.</li>
 <li><strong>Margin trading</strong>: Margin/lending simulation in backtesting does not enforce real exchange margin rules. Do not use backtesting margin results to size live margin positions without additional validation.</li>
 </ul>
-<hr />
-<h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
+<hr>
+<h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="README.md">README</a> — Project overview and quick start</li>
 <li><a href="architecture.md">Architecture</a> — System design and components</li>
 <li><a href="workflow.md">Workflow</a> — Event flows and processing pipelines</li>
 <li><a href="state-management.md">State Management</a> — State lifecycle and data models</li>
 </ul></main>
-<script type="module">
-import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@12.1.0/dist/mermaid.esm.min.mjs';
-mermaid.initialize({startOnLoad:true,securityLevel:'strict',theme:'default',flowchart:{useMaxWidth:true},sequence:{useMaxWidth:true}});
-</script></body></html>
+</body></html>
